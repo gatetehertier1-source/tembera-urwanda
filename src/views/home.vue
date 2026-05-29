@@ -1,59 +1,162 @@
 <template>
+    <!-- HERO SECTION -->
     <section
-        class="relative h-screen bg-cover bg-no-repeat bg-[center_top_25%] flex items-center justify-center text-white"
+        class="relative h-screen bg-cover bg-no-repeat bg-[center_top_25%] flex items-center justify-center text-white overflow-hidden"
         :style="{ backgroundImage: `url(${bgImage})` }"
     >
-        <div class="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/60 backdrop-blur-[1px]"></div>
-        
-        <div class="relative text-center px-4 max-w-3xl z-10">
-            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight mb-4 drop-shadow-lg uppercase">
-                Welcome to Tembera u Rwanda
+        <!-- Overlay -->
+        <div class="absolute inset-0 bg-gradient-to-b from-black/70 via-black/40 to-black/80"></div>
+
+        <!-- Decorative Glow -->
+        <div class="absolute top-20 left-10 w-72 h-72 bg-green-500/20 rounded-full blur-3xl"></div>
+        <div class="absolute bottom-10 right-10 w-72 h-72 bg-emerald-400/10 rounded-full blur-3xl"></div>
+
+        <!-- Hero Content -->
+        <div class="relative text-center px-4 max-w-4xl z-10">
+            <span
+                class="inline-block px-4 py-1 mb-6 text-sm tracking-[0.3em] uppercase border border-white/30 rounded-full bg-white/10 backdrop-blur-md"
+            >
+                Discover Rwanda
+            </span>
+
+            <h1
+                class="text-5xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mb-5 drop-shadow-2xl uppercase leading-tight"
+            >
+                Welcome to <span class="text-green-400">Tembera u Rwanda</span>
             </h1>
-            <p class="text-xl md:text-2xl font-semibold text-green-400 drop-shadow-md tracking-wide">
-                The Land of a Thousand Hills
+
+            <p
+                class="text-lg md:text-2xl font-medium text-gray-200 max-w-2xl mx-auto leading-relaxed"
+            >
+                Explore breathtaking landscapes, vibrant culture, wildlife adventures,
+                and unforgettable experiences in the heart of Africa.
             </p>
+
+            <!-- Buttons -->
+            <div class="mt-10 flex flex-col sm:flex-row gap-4 justify-center">
+                <button
+                    class="px-8 py-3 bg-green-500 hover:bg-green-600 transition-all duration-300 rounded-full font-semibold shadow-lg hover:scale-105"
+                >
+                    Explore Now
+                </button>
+
+                <button
+                    class="px-8 py-3 border border-white/40 bg-white/10 backdrop-blur-md hover:bg-white/20 transition-all duration-300 rounded-full font-semibold"
+                >
+                    Learn More
+                </button>
+            </div>
         </div>
 
-        <div class="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce opacity-75 hidden md:block">
-            <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 8.25l-7.5 7.5-7.5-7.5"></path>
+        <!-- Scroll Indicator -->
+        <div
+            class="absolute bottom-6 left-1/2 -translate-x-1/2 animate-bounce opacity-75 hidden md:block"
+        >
+            <svg
+                class="w-7 h-7 text-white"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+            >
+                <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M19.5 8.25l-7.5 7.5-7.5-7.5"
+                ></path>
             </svg>
         </div>
     </section>
 
-    <section class="py-20 bg-gray-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-black text-gray-900 tracking-tight mb-3">
+    <!-- DESTINATIONS SECTION -->
+    <section class="py-24 bg-gradient-to-b from-gray-50 to-white relative overflow-hidden">
+        <!-- Background Decorations -->
+        <div class="absolute -top-20 -left-20 w-80 h-80 bg-green-100 rounded-full blur-3xl opacity-40"></div>
+        <div class="absolute bottom-0 right-0 w-96 h-96 bg-emerald-100 rounded-full blur-3xl opacity-30"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <!-- Section Header -->
+            <div class="text-center mb-20">
+                <span class="text-green-600 font-semibold uppercase tracking-[0.25em] text-sm">
+                    Tourist Destinations
+                </span>
+
+                <h2
+                    class="text-4xl md:text-5xl font-black text-gray-900 tracking-tight mt-3 mb-5"
+                >
                     Explore Rwanda
                 </h2>
-                <div class="w-16 h-1 bg-green-500 mx-auto rounded-full"></div>
+
+                <p class="text-gray-600 max-w-2xl mx-auto leading-relaxed">
+                    From breathtaking national parks to relaxing lakeside escapes,
+                    Rwanda offers unforgettable adventures for every traveler.
+                </p>
+
+                <div class="w-20 h-1.5 bg-green-500 mx-auto rounded-full mt-6"></div>
             </div>
-            
+
+            <!-- Cards -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
                 <div
                     v-for="(card, idx) in cards"
                     :key="idx"
-                    class="bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden flex flex-col group"
+                    class="bg-white rounded-2xl shadow-md hover:shadow-2xl transition-all duration-500 overflow-hidden flex flex-col group border border-gray-100 hover:-translate-y-2"
                 >
+                    <!-- Image -->
                     <div class="w-full aspect-video overflow-hidden bg-gray-200 relative">
-                        <img 
-                            :src="card.img" 
-                            :alt="card.title" 
-                            class="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-500 ease-out"
+                        <img
+                            :src="card.img"
+                            :alt="card.title"
+                            class="w-full h-full object-cover object-center transform group-hover:scale-110 transition-transform duration-700 ease-out"
                             loading="lazy"
                         />
+
+                        <!-- Gradient Overlay -->
+                        <div
+                            class="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-70"
+                        ></div>
+
+                        <!-- Small Badge -->
+                        <span
+                            class="absolute top-4 left-4 bg-green-500 text-white text-xs px-3 py-1 rounded-full shadow-md"
+                        >
+                            Popular
+                        </span>
                     </div>
-                    
+
+                    <!-- Content -->
                     <div class="p-6 flex-grow flex flex-col justify-between">
                         <div>
-                            <h3 class="text-lg font-bold text-gray-800 mb-2 group-hover:text-green-600 transition-colors duration-200">
+                            <h3
+                                class="text-xl font-bold text-gray-800 mb-3 group-hover:text-green-600 transition-colors duration-300"
+                            >
                                 {{ card.title }}
                             </h3>
+
                             <p class="text-gray-600 text-sm leading-relaxed">
                                 {{ card.text }}
                             </p>
                         </div>
+
+                        <!-- Button -->
+                        <button
+                            class="mt-6 text-green-600 font-semibold flex items-center gap-2 group-hover:gap-3 transition-all duration-300"
+                        >
+                            Discover
+                            <svg
+                                class="w-4 h-4"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2"
+                                viewBox="0 0 24 24"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M9 5l7 7-7 7"
+                                ></path>
+                            </svg>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -64,7 +167,7 @@
 <script setup>
 import { ref } from 'vue'
 
-// Hero Background Image (Your newly updated high-res river landscape)
+// Hero Background Image
 const bgImage = new URL('../assets/Beautifull Nature.jpg', import.meta.url).href
 
 // Destination Cards
